@@ -22,13 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&39vam%p6tk_)jza^c$7t8do!lt3&0nzguof*ty8)#8z=+x=_@'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(" ")
 
 # Application definition
 
@@ -79,11 +78,14 @@ WSGI_APPLICATION = 'pax.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+DATABASE_URL = "postgres://username:password@hostname:port/dbname"
+#DATABASE_URL = "postgresql://pax_user:Bhipowqs8QdQjmP12IFQk9rhtt11T8Gk@dpg-ct1jghd6l47c73bg16k0-a.oregon-postgres.render.com/pax"
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.parse(
+        os.getenv('DATABASE_URL', 'sqlite:///db.sqlite3')  # Fallback to SQLite
+    )
 }
 
 
