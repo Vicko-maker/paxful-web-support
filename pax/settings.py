@@ -97,10 +97,10 @@ WSGI_APPLICATION = 'pax.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'paxful_s647',
-        'USER': 'paxful_s647_user',
-        'PASSWORD': 'HfP3lMGxwKdUwaqAOoGB41HCUizwVxky',
-        'HOST': 'dpg-ct2lv03qf0us739u7fp0-a.oregon-postgres.render.com',
+        'NAME': 'pax001',
+        'USER': 'pax001_user',
+        'PASSWORD': 'S05yNIc89VxBFhNJ2vgrPWJfza5bJUu1',
+        'HOST': 'dpg-ctm4gqggph6c739o4ej0-a.oregon-postgres.render.com',
         'PORT': '5432',
     }
 }
